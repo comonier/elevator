@@ -21,3 +21,7 @@ teleport:
   up: "&aSubindo..."
   down: "&eDescendo..."
   no-floor-found: "&cNão foi encontrado um andar válido para teleporte."
+
+detect:
+  title: "&bElevador detectado:"
+  subtitle: "&fPule para subir ou Agache para descer!"

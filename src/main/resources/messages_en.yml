@@ -21,3 +21,7 @@ teleport:
   up: "&aGoing up..."
   down: "&eGoing down..."
   no-floor-found: "&cNo valid floor found for teleportation."
+
+detect:
+  title: "&bElevator detected:"
+  subtitle: "&fJump to go up or Sneak to go down!"

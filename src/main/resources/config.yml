@@ -5,25 +5,28 @@
 lang: "messages_en"
 
 # Blocks that will function as an elevator
-# You can add as many materials as you want from the official Bukkit list
 block-types:
   - IRON_BLOCK
   - GOLD_BLOCK
 
-# If set to false, everyone can use the elevator.
-# If set to true, only those with 'elevator.use' permission can use it.
+# Set to true to require 'elevator.use' permission
 require-permission: false
 
-# Maximum distance between blocks for teleportation.
-# Use -1 for unlimited distance (within world boundaries).
+# Max teleport distance (-1 = unlimited)
 max-distance: -1
 
-# Discord Webhook URL for creation announcements
+# Discord Webhook for global announcements
 discord-webhook: ""
+
+# Time in seconds between "Elevator Detected" messages for the same player
+detect-cooldown: 5
 
 # Sound Settings
 # Volume 2.0 allows the sound to be heard within ~32 blocks (2 chunks)
-# Pitch: 0.5 to 2.0 (Higher is sharper)
+
+# Sound when stepping ON an elevator block
+sound-detect-type: "BLOCK_BEEHIVE_ENTER"
+sound-detect-pitch: 1.0
 
 # Sound when going UP
 sound-up-type: "ENTITY_SHULKER_TELEPORT"
@@ -33,11 +36,11 @@ sound-up-pitch: 1.2
 sound-down-type: "BLOCK_PISTON_EXTEND"
 sound-down-pitch: 0.8
 
-# Global volume for both
+# Global volume for teleport sounds
 sound-volume: 2.0
 
 # --- Height Reference per Dimension ---
-# Overworld: Min Y -64 | Max Y 320 (Total: 384 blocks)
-# Nether:    Min Y 0   | Max Y 128 (Total: 128 blocks)
-# The End:   Min Y 0   | Max Y 256 (Total: 256 blocks)
+# Overworld: Min Y -64 | Max Y 320
+# Nether:    Min Y 0   | Max Y 128
+# The End:   Min Y 0   | Max Y 256
 # ------------------------------------------

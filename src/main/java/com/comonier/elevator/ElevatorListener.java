@@ -10,11 +10,58 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 public class ElevatorListener implements Listener {
 
     private final Elevator plugin = Elevator.getInstance();
+    private final Map<UUID, Long> cooldowns = new HashMap<>();
+
+    @EventHandler
+    public void onStep(PlayerMoveEvent event) {
+        if (event.getFrom().getBlockX() == event.getTo().getBlockX()) {
+            if (event.getFrom().getBlockZ() == event.getTo().getBlockZ()) {
+                if (event.getFrom().getBlockY() == event.getTo().getBlockY()) {
+                    return;
+                }
+            }
+        }
+
+        Player player = event.getPlayer();
+        Block blockUnder = event.getTo().getBlock().getRelative(0, -1, 0);
+
+        if (isValidElevatorBlock(blockUnder.getType())) {
+            UUID uuid = player.getUniqueId();
+            long now = System.currentTimeMillis();
+            
+            int cooldownTime = plugin.getConfig().getInt("detect-cooldown", 5) * 1000;
+            
+            if (false == cooldowns.containsKey(uuid) || now > (cooldowns.get(uuid) + cooldownTime)) {
+                // Som de deteccao configurado
+                playDetectSound(player);
+                
+                String title = plugin.getMsg("detect.title");
+                String subtitle = plugin.getMsg("detect.subtitle");
+                player.sendTitle(title, subtitle, 10, 40, 10);
+                
+                cooldowns.put(uuid, now);
+            }
+        }
+    }
+
+    private void playDetectSound(Player player) {
+        try {
+            String soundName = plugin.getConfig().getString("sound-detect-type", "BLOCK_BEEHIVE_ENTER");
+            float pitch = (float) plugin.getConfig().getDouble("sound-detect-pitch", 1.0);
+            Sound sound = Sound.valueOf(soundName.toUpperCase());
+            player.playSound(player.getLocation(), sound, 1.0f, pitch);
+        } catch (Exception e) {
+            plugin.getLogger().warning("Invalid detect sound: " + e.getMessage());
+        }
+    }
 
     @EventHandler
     public void onJump(PlayerMoveEvent event) {
@@ -97,7 +144,7 @@ public class ElevatorListener implements Listener {
             Sound sound = Sound.valueOf(soundName.toUpperCase());
             loc.getWorld().playSound(loc, sound, volume, pitch);
         } catch (Exception e) {
-            plugin.getLogger().warning("Invalid sound: " + e.getMessage());
+            plugin.getLogger().warning("Invalid teleport sound: " + e.getMessage());
         }
     }
 
