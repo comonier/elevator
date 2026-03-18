@@ -1,4 +1,4 @@
-# 🛗 Elevator Plugin v1.0
+# Elevator Plugin v1.0
 **Created by: comonier**
 
 A simple and efficient elevator plugin for Minecraft **1.21.1**. Use configurable blocks to teleport vertically with custom sounds and Discord integration.
