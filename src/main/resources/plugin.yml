@@ -1,5 +1,5 @@
 name: Elevator
-version: 1.0
+version: 1.1
 main: com.comonier.elevator.Elevator
 api-version: '1.21'
 author: comonier

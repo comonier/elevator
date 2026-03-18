@@ -11,7 +11,7 @@ elevator-created: "&b[Elevator] &f%player% &7criou um elevador de &f%floors% and
 help:
   - "&b---------- &fElevador &b----------"
   - "&7Criador: &fcomonier"
-  - "&7Versão: &f1.0"
+  - "&7Versão: &f1.1"
   - ""
   - "&b/elevator reload &7- Recarrega as configurações."
   - "&7Use &fAgachar &7para descer e &fPular &7para subir."
