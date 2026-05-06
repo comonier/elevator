@@ -40,7 +40,6 @@ public class ElevatorListener implements Listener {
             int cooldownTime = plugin.getConfig().getInt("detect-cooldown", 5) * 1000;
             
             if (false == cooldowns.containsKey(uuid) || now > (cooldowns.get(uuid) + cooldownTime)) {
-                // Som de deteccao configurado
                 playDetectSound(player);
                 
                 String title = plugin.getMsg("detect.title");
@@ -117,7 +116,8 @@ public class ElevatorListener implements Listener {
             if (isValidElevatorBlock(targetBlock.getType())) {
                 if (targetBlock.getRelative(0, 1, 0).getType().isAir()) {
                     if (targetBlock.getRelative(0, 2, 0).getType().isAir()) {
-                        Location teleLoc = targetBlock.getLocation().add(0.5, 1.0, 0.5);
+                        // Ajuste de altura centralizado para evitar bugs de colisao no Bedrock
+                        Location teleLoc = targetBlock.getLocation().add(0.5, 1.05, 0.5);
                         teleLoc.setYaw(player.getLocation().getYaw());
                         teleLoc.setPitch(player.getLocation().getPitch());
                         

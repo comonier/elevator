@@ -1,0 +1,27 @@
+# Mensajes en Español - Plugin Elevator
+# Created by: comonier
+
+prefix: "&b[Elevator] &r"
+no-permission: "&cNo tienes permiso para usar este elevador."
+no-admin-permission: "&cNo tienes permiso para recargar el plugin."
+reload-success: "&a¡Configuraciones y mensajes recargados con éxito!"
+only-players: "&cSolo los jugadores pueden usar este comando."
+elevator-created: "&b[Elevator] &f%player% &7ha creado un elevador de &f%floors% pisos &7usando &f%block%&7!"
+
+help:
+  - "&b---------- &fElevador &b----------"
+  - "&7Creador: &fcomonier"
+  - "&7Versión: &f1.1"
+  - ""
+  - "&b/elevator reload &7- Recarga la configuración."
+  - "&7Usa &fAgacharse &7para bajar y &fSaltar &7para subir."
+  - "&b------------------------------"
+
+teleport:
+  up: "&aSubiendo..."
+  down: "&eBajando..."
+  no-floor-found: "&cNo se encontró un piso válido para el teletransporte."
+
+detect:
+  title: "&bElevador detectado:"
+  subtitle: "&f¡Salta para subir o Agáchate para bajar!"

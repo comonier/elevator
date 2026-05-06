@@ -20,9 +20,11 @@ public class Elevator extends JavaPlugin {
         // Salva a config.yml padrao se nao existir
         saveDefaultConfig();
         
-        // Garante que ambos os arquivos de mensagens existam na pasta do plugin
+        // Garante que todos os arquivos de mensagens existam na pasta do plugin
         saveResourceIfNotExists("messages_pt.yml");
         saveResourceIfNotExists("messages_en.yml");
+        saveResourceIfNotExists("messages_es.yml");
+        saveResourceIfNotExists("messages_ru.yml");
         
         // Carrega as mensagens baseadas no idioma definido na config
         loadMessages();
@@ -36,7 +38,7 @@ public class Elevator extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ElevatorListener(), this);
         getServer().getPluginManager().registerEvents(new ElevatorCreationListener(), this);
 
-        getLogger().info("Elevator v1.0 by comonier loaded successfully!");
+        getLogger().info("Elevator v1.1 by comonier loaded successfully!");
     }
 
     private void saveResourceIfNotExists(String resourceName) {
@@ -47,12 +49,12 @@ public class Elevator extends JavaPlugin {
     }
 
     public void loadMessages() {
-        String lang = getConfig().getString("lang", "messages_pt");
+        String lang = getConfig().getString("lang", "messages_en");
         File msgFile = new File(getDataFolder(), lang + ".yml");
 
-        // Fallback para Portugues caso o arquivo configurado nao seja encontrado
+        // Fallback para Ingles caso o arquivo configurado nao seja encontrado
         if (false == msgFile.exists()) {
-            msgFile = new File(getDataFolder(), "messages_pt.yml");
+            msgFile = new File(getDataFolder(), "messages_en.yml");
         }
 
         messagesConfig = YamlConfiguration.loadConfiguration(msgFile);
